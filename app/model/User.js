@@ -16,36 +16,38 @@ class UserModel {
     this.endereco = endereco;
   }
 
-  async listUser() {
+  async index() {
     try {
       const result = await User.findAll();
       return result;
     } catch (error) {
-      // throw new Error();
+      throw new Error();
     }
   }
 
-  async createUser(user) {
+  async create(user) {
     try {
       const result = await User.create(user);
       return result;
     } catch (error) {
-      // throw new Error();
+      throw new Error();
     }
   }
 
-  async updateUser(id, user) {
+  async update(id, user) {
     try {
-      const user = await User.update(
+      const result = await User.update(
         { nome: user.nome, endereco: user.endereco },
-        { where: { id } }
+        { where: { id: id } }
       );
+
+      return result;
     } catch (error) {
-      //  throw new Error();
+      throw new Error();
     }
   }
 
-  async deleteUser(id) {
+  async delete(id) {
     try {
       User.destroy({
         where: {
@@ -53,7 +55,7 @@ class UserModel {
         },
       });
     } catch (error) {
-      //    throw new Error();
+      throw new Error();
     }
   }
 }
