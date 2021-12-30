@@ -5,6 +5,7 @@ const db = new Sequelize({
   password: process.env.PGPASSWORD,
   host: process.env.PGHOST,
   dialect: "postgres",
+  logging: false,
 });
 
 module.exports = db;

@@ -10,7 +10,7 @@ const PORT = 3000;
 
 (async () => {
   try {
-    // await sequelize.sync({ force: false });
+    await sequelize.sync({ force: false });
     app.listen(PORT, console.log("servidor rodando na porta " + PORT));
   } catch (error) {
     console.log(error);
