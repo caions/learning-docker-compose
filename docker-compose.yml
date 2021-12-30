@@ -1,17 +1,15 @@
 version: "3"
 
 services:
-  node_backed:
+  node_backend:
     build: .
     command: npm start
     ports:
       - "3000:3000"
     volumes:
       - .:/usr/app
-    environment:
-      - PGUSER=postgres
-      - PGPASSWORD=segredo
-      - PGHOST=node_db
+    env_file:
+      - backend.env
     depends_on:
       - node_db
 
@@ -20,7 +18,7 @@ services:
     ports:
       - 5432:5432
     env_file:
-      - .env
+      - db.env
     volumes:
       - meu-volume:/var/lib/postgresql/data
 
